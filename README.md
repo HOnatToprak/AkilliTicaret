@@ -2,38 +2,74 @@
 
 ### Categories
 
-[category1]
-├── product1
-├── [category2]
-│   ├── product2
-│   └── [category4]
-│       └── product4
-└── [category3]
-    └── product3
+```
+{
+  id: 1,
+  products: [{id: 1}],
+  subcategories: [
+    {
+      id: 2,
+      products: [{id: 2}],
+      subcategories: [
+        {
+          id: 4,
+          products: [{id: 4}],
+          subcategories: [],
+        }
+      ],
+    },
+    {
+      id: 3,
+      products: [{id: 3}],
+      subcategories: [],
+    }
+  ],
+}
+
+```
 
 ### Orders
 
-- **Order1**
--- Product1 Price: 10
--- Product2 Price: 11
--- Product3 Price: 12
--- Product4 Price: 13
-- **Order2**
--- Product1 Price: 14
--- Product2 Price: 15
--- Product3 Price: 16
--- Product4 Price: 17
-- **Order3**
--- Product1 Price: 18
--- Product2 Price: 19
--- Product3 Price: 20
--- Product4 Price: 21
-- **Order4**
--- Product1 Price: 22
--- Product2 Price: 23
--- Product3 Price: 24
--- Product4 Price: 25
-
+```
+[
+  {
+    id: 1,
+    products: [ 
+      { id: 1, price: 10 },
+      { id: 2, price: 11 },
+      { id: 3, price: 12 },
+      { id: 4, price: 13 },
+    ]
+  },
+  {
+    id: 2,
+    products: [ 
+      { id: 1, price: 14 },
+      { id: 2, price: 15 },
+      { id: 3, price: 16 },
+      { id: 4, price: 17 },
+    ]
+  },
+  {
+    id: 3,
+    products: [ 
+      { id: 1, price: 18 },
+      { id: 2, price: 19 },
+      { id: 3, price: 20 },
+      { id: 4, price: 21 },
+    ]
+  },
+  {
+    id: 4,
+    products: [ 
+      { id: 1, price: 22 },
+      { id: 2, price: 23 },
+      { id: 3, price: 24 },
+      { id: 4, price: 25 },
+    ]
+  },
+]
+```
 
 ### Test GetOrderStatistics
 
@@ -109,9 +145,11 @@ Result:
 
 Input:
   category1
+
 Result: 
 ```
-  product1 + category2.products + category3.products = [
+  product1 + category2.products + category3.products = 
+  [
     product1,
     product2,
     product3,
@@ -121,9 +159,11 @@ Result:
 
 Input:
   category2
+
 Result: 
 ```
-  product2 + category4.products = [
+  product2 + category4.products = 
+  [
     product2,
     Product4
   ]
@@ -131,6 +171,7 @@ Result:
 
 Input:
   category3
+
 Result: 
 ```
   [product3]
@@ -138,6 +179,7 @@ Result:
   
 Input:
   category4
+
 Result: 
 ```
   [product4]
